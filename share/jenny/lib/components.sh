@@ -25,6 +25,7 @@ render () {
     POST_DATE=$(get_post_date "$file") \
     POST_CONTENTS=$(cat $RENDER_TEMP_FILE) \
     BLOG_HOST=$BLOG_HOST \
+    BLOG_TITLE=$BLOG_TITLE \
     TAGS=$tags \
     $LAYOUT_DIR/post.sh > $destination
 }
@@ -99,6 +100,7 @@ index_insert () {
         PAGE_OLD=$PAGE_OLD \
         PAGE_NEW=$PAGE_NEW \
         BLOG_HOST=$BLOG_HOST \
+        BLOG_TITLE=$BLOG_TITLE \
         TAGNAME=$_TAGNAME \
         $LAYOUT_DIR/index.sh > "$_DIST/page/${page}.html"
     fi
