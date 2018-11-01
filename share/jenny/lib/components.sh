@@ -99,9 +99,9 @@ index_insert () {
         PAGE_NUM=$page \
         PAGE_OLD=$PAGE_OLD \
         PAGE_NEW=$PAGE_NEW \
-        TAGNAME=$_TAGNAME \
         BLOG_HOST=$BLOG_HOST \
         BLOG_TITLE=$BLOG_TITLE \
+        TAGNAME=$_TAGNAME \
         $LAYOUT_DIR/index.sh > "$_DIST/page/${page}.html"
     fi
 
