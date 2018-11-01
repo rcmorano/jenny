@@ -81,7 +81,7 @@ function get_filename() {
 }
 
 function get_unique_slug() {
-  local slug=$(echo $(get_filename "$1") | rev | cut -d ' ' -f 1 | rev)
+  local slug=$(echo $(get_filename "$1").md | sed 's|\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\) \(.*\).md$|\4|g' | sed 's| |-|g')
 
   $GREP "^$slug " $BLOG_LOCK > /dev/null
   if [ $? -eq 0 ]; then
@@ -127,7 +127,7 @@ function get_post_date_int() {
 }
 
 function get_post_date_rfc822() {
-  $DATE --rfc-822 --date="$(echo $(get_timestamp "$1") | $SED -e 's#\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\)#\1/\2/\3#')"
+  $DATE --rfc-822 --date="$(stat -c %y "$1")"
 }
 
 function get_tags() {
